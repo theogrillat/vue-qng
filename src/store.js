@@ -3,14 +3,23 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+let store = new Vuex.Store({
   state: {
-
+    user: {
+      connected: true
+    }
   },
   mutations: {
 
   },
   actions: {
 
+  },
+  getters: {
+
   }
 })
+
+global.store = store
+
+export default store

@@ -31,11 +31,8 @@
 </template>
 
 <script>
-import user from '@/App.vue'
-
-
 export default {
-  name: 'HelloWorld',
+  name: 'registerComp',
   props: {
     msg: String
   }

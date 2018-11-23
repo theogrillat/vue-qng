@@ -1,8 +1,7 @@
 <template>
   <div class="home about">
     <!-- <headerComp pageName="Profile"/> -->
-    <img alt="Vue logo" src="../assets/logo.png">
-    <loginComp v-if="!user.connected"/>
+    <loginComp v-if="user.connected"/>
   </div>
 </template>
 

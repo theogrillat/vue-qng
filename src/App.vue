@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <headerComp pageName="page"/>
+    <headerComp :pageName="page"/>
     <div id="nav">
       <router-link to="/">Profile</router-link>
       <router-link to="/help">Aides</router-link>
@@ -19,14 +19,17 @@
 
 import headerComp from '@/components/header.vue'
 import store from '@/store'
+import firebase from 'firebase/app'
 
 export default {
+  firebase,
   store: store,
   components: {
     headerComp
   },
   data() {
     return {
+      page: 'test',
       user: store.state.user
     }
   }

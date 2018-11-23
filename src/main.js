@@ -1,14 +1,22 @@
 import Vue from 'vue'
+import Buefy from 'buefy'
+import 'buefy/dist/buefy.css'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
-import './firebaseApp'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/database'
+// import './firebaseApp'
 
 Vue.config.productionTip = false
 
 new Vue({
+  firebase,
   router,
   store,
   render: function (h) { return h(App) }
 }).$mount('#app')
+
+Vue.use(Buefy)

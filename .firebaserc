@@ -1,5 +1,6 @@
 {
   "projects": {
-    "vue-test": "test-vue-ce7d3"
+    "vue-test": "test-vue-ce7d3",
+    "default": "test-vue-ce7d3"
   }
 }

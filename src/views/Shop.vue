@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <!-- <headerComp pageName="Boutique"/> -->
+    <headerComp pageName="Boutique"/>
     <h1>This is an shop page</h1>
   </div>
 </template>

@@ -1,7 +1,8 @@
 <template>
   <div class="home about">
-    <!-- <headerComp pageName="Profile"/> -->
-    <loginComp v-if="user.connected"/>
+    <headerComp pageName="Profile"/>
+    <loginComp/>
+    <!-- <registerComp/> -->
   </div>
 </template>
 

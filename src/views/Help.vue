@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <!-- <headerComp pageName="Aides"/> -->
+    <headerComp pageName="Aides"/>
     <h1>{{message}}</h1>
   </div>
 </template>

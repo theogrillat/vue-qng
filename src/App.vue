@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <headerComp :pageName="page"/>
+    
     <div id="nav">
       <router-link to="/">Profile</router-link>
       <router-link to="/help">Aides</router-link>
@@ -37,10 +37,40 @@ export default {
 </script>
 
 
-<style>
+<style lang="scss">
 
 
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
 
+// Set your colors
+$primary: #42b983;
+$primary-invert: findColorInvert($primary);
+$twitter: rgb(219, 179, 0);
+$twitter-invert: findColorInvert($twitter);
+
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+$colors: (
+    "white": ($white, $black),
+    "black": ($black, $white),
+    "light": ($light, $light-invert),
+    "dark": ($dark, $dark-invert),
+    "primary": ($primary, $primary-invert),
+    "info": ($info, $info-invert),
+    "success": ($success, $success-invert),
+    "warning": ($warning, $warning-invert),
+    "danger": ($danger, $danger-invert),
+    "twitter": ($twitter, $twitter-invert)
+);
+
+// Links
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
+
+// Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
 
 /* .about::before {
   transform: translateX(10px);
@@ -63,7 +93,8 @@ export default {
 }
 
 #nav {
-  background-color: #ffffff;
+  border-radius: 50px 50px 0px 0px;
+  background-color: $primary;
   padding-top: 30px;
   padding-bottom: 30px; 
   position: fixed;
@@ -76,11 +107,19 @@ export default {
 #nav a {
   margin: 12px;
   font-weight: bold;
-  color: #2c3e50;
+  color: #499276;
   text-decoration: none;
 }
 
 #nav a.router-link-exact-active {
-  color: #61D4A6;
+  color: $white;
+  font-weight: bolder;
 }
+
+.header {
+  border-radius: 0px 0px 50px 50px;
+  background-color: $primary;
+  color: $white;
+}
+
 </style>

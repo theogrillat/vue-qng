@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-      <h1>{{pageName}}</h1>
+      <h1 class="title is-4">{{pageName}}</h1>
   </div>
 </template>
 
@@ -20,18 +20,18 @@ export default {
 <style scoped>
 
 .header {
-    padding-bottom: 5px;
-    padding-top: 15px;
-    position: fixed;
-    left: 0px;
-    background-color: #ffffff;
-    top: 0px;
-    width: 100vw;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  padding-bottom: 10px;
+  padding-top: 10px;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 h1 {
-    margin: 0px;
+  margin: 0px;
+  color: #ffffff;
 }
 
 h3 {

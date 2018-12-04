@@ -2,11 +2,31 @@
   <div id="app">
     
     <div id="nav">
-      <router-link to="/">Profile</router-link>
-      <router-link to="/help">Aides</router-link>
-      <router-link to="/play">Jouer</router-link>
-      <router-link to="/rank">Rank</router-link>
-      <router-link to="/shop">Shop</router-link>
+      <router-link to="/">
+        <div class="navlink">
+          <div></div>
+        </div>
+      </router-link>
+      <router-link to="/help">
+        <div class="navlink">
+          <div></div>
+        </div>
+      </router-link>
+      <router-link to="/play">
+        <div class="navlink">
+          <div></div>
+        </div>
+      </router-link>
+      <router-link to="/rank">
+        <div class="navlink">
+          <div></div>
+        </div>
+      </router-link>
+      <router-link to="/shop">
+        <div class="navlink">
+          <div></div>
+        </div>
+      </router-link>
     </div>
     
       <router-view/>
@@ -48,7 +68,7 @@ export default {
 @import "~bulma/sass/utilities/_all";
 
 // Set your colors
-$primary: #42b983;
+$primary: #86E9D5;
 $primary-invert: findColorInvert($primary);
 $twitter: rgb(219, 179, 0);
 $twitter-invert: findColorInvert($twitter);
@@ -81,6 +101,38 @@ $link-focus-border: $primary;
   opacity: 0
 } */
 
+
+.button {
+  border-radius: 100px;
+  border: none;
+  box-shadow: 0 15px 18px -5px rgba($color: #000000, $alpha: 0.18);
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.1s;
+  &.is-large {
+    font-weight: 800;
+    margin-top: 7vh;
+  }
+  &:hover {
+    border: none !important;
+    outline: none !important;
+    box-shadow: 0 15px 18px -5px rgba($color: #000000, $alpha: 0.18) !important;
+    color: #ffffff !important;
+  }
+  &:focus {
+    border: none !important;
+    outline: none !important;
+    box-shadow: 0 15px 18px -5px rgba($color: #000000, $alpha: 0.18) !important;
+  }
+  &:active {
+    border: none !important;
+    outline: none !important;
+    box-shadow: 0 15px 18px -5px rgba($color: #000000, $alpha: 0.18) !important;
+    color: #ffffff !important;
+  }
+}
+
+
 .about {
   margin-top: 10vh;
   /* transition: all .3s ease;
@@ -97,33 +149,51 @@ $link-focus-border: $primary;
 }
 
 #nav {
-  border-radius: 50px 50px 0px 0px;
-  background-color: $primary;
-  padding-top: 30px;
-  padding-bottom: 30px; 
+  border-radius: 100px;
+  background-color: rgba($color: #ffffff, $alpha: 0.9);
   position: fixed;
-  bottom: 0px;
-  left: 0px;
-  width: 100vw;
-  box-shadow: 0 -1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  bottom: 5px;
+  left: 1vw;
+  width: 98vw;
+  height: 75px;
+  box-shadow: 0 6px 26px 0px rgba($color: #000000, $alpha: 0.15);
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
 }
   
 #nav a {
-  margin: 12px;
+  margin: 0px;
   font-weight: bold;
   color: #499276;
   text-decoration: none;
 }
 
-#nav a.router-link-exact-active {
-  color: $white;
-  font-weight: bolder;
+#nav a .navlink div {
+  border-radius: 100px;
+  background-color: rgba($color: #FFA935, $alpha: 0.3);
+  height: 50px;
+  width: 50px;
+  font-weight: bold;
+  color: #499276;
+  text-decoration: none;
+  transition: all 300ms;
 }
 
-.header {
-  border-radius: 0px 0px 50px 50px;
-  background-color: $primary;
-  color: $white;
+#nav a .navlink {
+  margin-top: 12.5px;
+  display: inline-flex;
+  justify-content: center;
+  width: 20%;
 }
+
+#nav a.router-link-exact-active .navlink div {
+  background-color: $primary;
+  transition: all 300ms;
+  transform: scale(1.1);
+}
+
+
+
+
 
 </style>

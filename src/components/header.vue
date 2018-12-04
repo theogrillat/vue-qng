@@ -17,21 +17,27 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 
 .header {
+  border-radius: 100px;
+  background-color: rgba($color: #ffffff, $alpha: 0.9);
+  color: #000000;
   padding-bottom: 10px;
-  padding-top: 10px;
+  padding-top: 25px;
   position: fixed;
   left: 0px;
-  top: 0px;
+  top: 5px;
   width: 100vw;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  height: 75px;
+  box-shadow: 0 6px 26px 0px rgba($color: #000000, $alpha: 0.15);
 }
+
+
 
 h1 {
   margin: 0px;
-  color: #ffffff;
+  color: #000000;
 }
 
 h3 {
@@ -46,6 +52,6 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #ffffff;
 }
 </style>

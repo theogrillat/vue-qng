@@ -6,11 +6,15 @@
     <h1 v-if="loggedIn" class="title is-2">Bienvenu {{getUser.displayName}} !</h1>
 
 
-      <button v-if="!loggedIn" @click="logIn" class="button is-primary is-large is-fullwidth">
+      <button v-if="!loggedIn" @click="logIn" class="button google is-primary is-large is-fullwidth">
         Google
       </button>
 
-      <button v-if="loggedIn" @click="logOut" class="button is-primary is-large is-fullwidth">
+      <button v-if="!loggedIn" @click="logIn" class="button facebook is-primary is-large is-fullwidth">
+        Facebook
+      </button>
+
+      <button v-if="loggedIn" @click="logOut" class="button logout is-primary is-large is-fullwidth">
         Logout
       </button>
     </form>
@@ -59,12 +63,39 @@ export default {
 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 
-button {
-  background-color: #e74630 !important;
-  font-weight: 800;
-  margin-top: 7vh;
+.google {
+  color: #ffffff;
+}
+
+.button {
+  color: #ffffff;
+  &.google {
+    background-color: #e74630;
+    &:hover {
+      background-color: #ca3c29;
+    }
+    &:focus {
+      background-color: #ca3c29;
+    }
+    &:active {
+      background-color: #ca3c29;
+    }
+  }
+  &.facebook {
+    background-color: #3b5998;
+    &:hover {
+      background-color: #35508a;
+    }
+    &:focus {
+      background-color: #35508a;
+    }
+    &:active {
+      background-color: #35508a;
+    }
+  }
+  
 }
 
 h1 {

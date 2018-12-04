@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <headerComp pageName="Jouer"/>
+  <div class="about page">
+    <!-- <headerComp pageName="Jouer"/> -->
     <h1>This is an play page</h1>
   </div>
 </template>

@@ -1,36 +1,39 @@
 <template>
   <div id="app">
+
+    <headerComp :pageName="currentPage"/>
     
     <div id="nav">
-      <router-link to="/">
-        <div class="navlink">
-          <div></div>
+      <router-link to="/play">
+        <div @click="changePage('Jouer')" class="navlink">
+          <font-awesome-icon icon="th-large" size="lg" :style="{ color: '#ffffff' }"/>
         </div>
       </router-link>
       <router-link to="/help">
-        <div class="navlink">
-          <div></div>
+        <div @click="changePage('Infos')" class="navlink">
+          <font-awesome-icon icon="info" size="lg" :style="{ color: '#ffffff' }"/>
         </div>
       </router-link>
-      <router-link to="/play">
-        <div class="navlink">
-          <div></div>
+      <router-link to="/">
+        <div @click="changePage('Profile')" class="navlink">
+            <font-awesome-icon icon="user" size="lg" :style="{ color: '#ffffff' }"/>
         </div>
       </router-link>
       <router-link to="/rank">
-        <div class="navlink">
-          <div></div>
+        <div @click="changePage('Classement')" class="navlink">
+          <font-awesome-icon icon="trophy" size="lg" :style="{ color: '#ffffff' }"/>
         </div>
       </router-link>
       <router-link to="/shop">
-        <div class="navlink">
-          <div></div>
+        <div @click="changePage('Boutique')" class="navlink">
+          <font-awesome-icon icon="shopping-bag" size="lg" :style="{ color: '#ffffff' }"/>
         </div>
       </router-link>
     </div>
     
-      <router-view/>
-    
+      <transition name="router-anim" enter-active-class="animated fadeInDown faster" leave-active-class="animated fadeOutDown faster">
+        <router-view/>
+      </transition>
   </div>
 </template>
 
@@ -48,15 +51,19 @@ export default {
   vuefire,
   firebase,
   store: store,
+  data () {
+    return {
+      currentPage: 'Profile'
+    }
+  },
+  methods: {
+    changePage (name) {
+      this.currentPage = name
+    }
+  },
   components: {
     headerComp
   },
-  data() {
-    return {
-      page: 'test',
-      user: store.state.user
-    }
-  }
 }
 </script>
 
@@ -66,6 +73,7 @@ export default {
 
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
+@import "~animate.css/animate.min";
 
 // Set your colors
 $primary: #86E9D5;
@@ -101,6 +109,9 @@ $link-focus-border: $primary;
   opacity: 0
 } */
 
+html {
+  background-color: #f5f5f5;
+}
 
 .button {
   border-radius: 100px;
@@ -108,7 +119,7 @@ $link-focus-border: $primary;
   box-shadow: 0 15px 18px -5px rgba($color: #000000, $alpha: 0.18);
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;
-  transition: all 0.1s;
+  transition: background-color 0.1s;
   &.is-large {
     font-weight: 800;
     margin-top: 7vh;
@@ -133,6 +144,7 @@ $link-focus-border: $primary;
 }
 
 
+
 .about {
   margin-top: 10vh;
   /* transition: all .3s ease;
@@ -149,9 +161,10 @@ $link-focus-border: $primary;
 }
 
 #nav {
+  z-index: 98;
   border-radius: 100px;
   background-color: rgba($color: #ffffff, $alpha: 0.9);
-  position: fixed;
+  position: absolute;
   bottom: 5px;
   left: 1vw;
   width: 98vw;
@@ -159,41 +172,56 @@ $link-focus-border: $primary;
   box-shadow: 0 6px 26px 0px rgba($color: #000000, $alpha: 0.15);
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;
+
+  display: inline-flex;
 }
   
 #nav a {
+  display: flex;
+  justify-content: center;
+  width: 20%;
   margin: 0px;
   font-weight: bold;
   color: #499276;
   text-decoration: none;
 }
 
-#nav a .navlink div {
+
+
+#nav a .navlink {
   border-radius: 100px;
-  background-color: rgba($color: #FFA935, $alpha: 0.3);
+  background-color: rgba($color: rgb(183, 233, 223), $alpha: 0.3);
   height: 50px;
   width: 50px;
-  font-weight: bold;
   color: #499276;
   text-decoration: none;
   transition: all 300ms;
-}
-
-#nav a .navlink {
   margin-top: 12.5px;
-  display: inline-flex;
+  padding-top: 14px;
   justify-content: center;
-  width: 20%;
 }
 
-#nav a.router-link-exact-active .navlink div {
+#nav a.router-link-exact-active .navlink  {
   background-color: $primary;
   transition: all 300ms;
   transform: scale(1.1);
 }
 
 
+.page {
+  position: fixed;
+  width: 100vw;
+}
 
+.faster {
+  animation-duration: 600ms !important;
+  animation-timing-function: cubic-bezier(.79, .01, .22, 1) !important;
+}
+
+.highlight {
+  font-weight: 600;
+  color: $primary;
+}
 
 
 </style>

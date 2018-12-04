@@ -12,8 +12,12 @@ let store = new Vuex.Store({
     setUser (state, payload) {
       state.user = payload
     },
-    logIn () {
+    logInGoogle () {
       const provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithRedirect(provider)
+    },
+    logInFB () {
+      var provider = new firebase.auth.FacebookAuthProvider()
       firebase.auth().signInWithRedirect(provider)
     },
     logOut () {

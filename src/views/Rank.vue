@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <headerComp pageName="Classement"/>
+  <div class="about page">
+    <!-- <headerComp pageName="Classement"/> -->
     <h1>This is an rank page</h1>
   </div>
 </template>

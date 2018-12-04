@@ -1,6 +1,6 @@
 <template>
-  <div class="home about">
-    <headerComp pageName="Profile"/>
+  <div class="home about page">
+    <!-- <headerComp pageName="Profile"/> -->
     <!-- <loginComp/> -->
     <registerCompGoogle/>
   </div>

@@ -43,7 +43,7 @@
       </b-field>
 
 
-      <h3 class="title error-mdp is-4" v-if="mdpMatch">Les mots de passes ne correspondent pas</h3>
+      <h3 class="title error-mdp is-4" v-if="!mdpMatch">Les mots de passes ne correspondent pas</h3>
 
       
 
@@ -59,17 +59,19 @@
 <script>
 
 
-
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 export default {
+  firebase,
   name: 'registerComp',
   data () {
     return {
       mdpOne: '',
       mdpTwo: '',
-      mdpMatch: null,
+      mdpMatch: true,
       email: '',
-      authUser: null
+      authUser: false
     }
   },
   props: {
@@ -79,15 +81,27 @@ export default {
     createNewUser () {
       if (this.mdpOne === this.mdpTwo) {
         firebase.auth().createUserWithEmailAndPassword(this.email, this.mdpOne)
+        this.mdpMatch = true
       } else {
         this.mdpMatch = false
       }
-    }
+    },
+
+    
   },
 
   UserIsCreated () {
-    firebase.auth().onAuthStateChanged(user => {this.authUser = user} )
-  }
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          alert("USER CONNECTED")
+          // User is signed in.
+        } else {
+          alert("NO USER")
+          // No user is signed in.
+        }
+      });
+    }
+  
 }
 </script>
 

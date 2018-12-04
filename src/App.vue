@@ -20,8 +20,12 @@
 import headerComp from '@/components/header.vue'
 import store from '@/store'
 import firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/database'
+import vuefire from 'vuefire'
 
 export default {
+  vuefire,
   firebase,
   store: store,
   components: {

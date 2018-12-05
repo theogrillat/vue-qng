@@ -1,8 +1,10 @@
 <template>
-  <div class="home about page">
+  <div class="home about page section">
     <!-- <headerComp pageName="Profile"/> -->
     <!-- <loginComp/> -->
-    <registerCompGoogle/>
+    
+      <registerCompGoogle/>
+    
   </div>
 </template>
 
@@ -32,6 +34,6 @@ export default {
     return {
       user: store.state.user
     }
-  }
+  },
 }
 </script>

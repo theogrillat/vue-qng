@@ -1,14 +1,14 @@
 <template>
-<div class="section">
+<div>
   
   <div class="container">
     <h1 v-if="!loggedIn" class="title is-2">Se connecter</h1>
     <h1 v-if="loggedIn" class="title is-3">Bienvenue<br> {{getUser.displayName}} !</h1>
-    <p>Pour utliliser les fonctionnalitées de l'application, et pour jouer à <span class="highlight">QuizNGo</span>, vous devez vous connecter</p>
+    <p v-if="!loggedIn">Pour utliliser les fonctionnalitées de l'application, et pour jouer à <span class="highlight">QuizNGo</span>, vous devez vous connecter</p>
     <img class="profileImg" v-if="loggedIn" :src="getUser.photoURL+'?height=500'" alt="avatar">
 
 
-      <div v-if="!emailClicked" class="wrapper">
+      <div v-if="!getCompState" class="wrapper">
         <button v-if="!loggedIn" @click="logInGoogle" class="button google is-primary is-large is-fullwidth">
           Google
         </button>
@@ -17,13 +17,13 @@
           Facebook
         </button>
 
-        <button v-if="!loggedIn" @click="goEmail" class="button email is-primary is-large is-fullwidth">
+        <button v-if="!loggedIn" @click="changeCompState" class="button email is-primary is-large is-fullwidth">
           Email
         </button>
       </div>
 
 
-      <div v-if="emailClicked" class="wrapperEmail">
+      <div v-if="getCompState" class="wrapperEmail">
         <form>
           <b-field>
             <b-input 
@@ -47,7 +47,7 @@
           </b-field>
 
           <div class="grouped">
-            <div @click="backEmail" class="button backBtn is-primary is-large is-fullwidth">
+            <div @click="changeCompState" class="button backBtn is-primary is-large is-fullwidth">
               <font-awesome-icon icon="arrow-left" size="1x" :style="{ color: '#ffffff' }"/>
             </div>            
             <button class="button connecter is-primary is-large is-fullwidth">
@@ -58,7 +58,7 @@
       </div>
 
       <button v-if="loggedIn" @click="logOut" class="button logout is-primary is-large is-fullwidth">
-        Logout
+        Se déconnecter
       </button>
 
       
@@ -89,23 +89,34 @@ export default {
   name: 'registerComp',
   data () {
     return {
-      emailClicked: false
+      emailClicked: false,
+      email: '',
+      mdp: ''
     }
   },
   props: {
     msg: String
   },
   methods: {
-    ...mapMutations(['logInGoogle', 'logInFB', 'logOut']),
-    goEmail () {
-      this.emailClicked = true
+    ...mapMutations(['logInGoogle', 'logInFB', 'logOut', 'changeCompState']),
+    success() {
+      this.$toast.open({
+        message: 'Vous êtes Connecté !',
+        type: 'is-twitter',
+        position: 'is-top'
+      })
     },
-    backEmail () {
-      this.emailClicked = false
-    }
   },
   computed: {
-    ...mapGetters(['loggedIn', 'getUser'])
+    toast () {
+      return this.$store.getters.loggedIn
+    },
+    ...mapGetters(['loggedIn', 'getUser', 'getCompState'])
+  },
+  watch: {
+    toast (value) {
+       this.success()
+    }
   },
   beforeCreate () {
     this.$store.dispatch('fetchCreds')
@@ -130,6 +141,11 @@ export default {
 <style scoped lang="scss">
 
 
+$primary: #67D3B9;
+$twitter: #FFA845;
+
+$primary-dark: rgb(91, 189, 166);
+$twitter-dark: rgb(207, 136, 56);
 // * {
 //   opacity: 0;
 // }
@@ -138,18 +154,20 @@ export default {
   color: #ffffff;
 }
 
+.input {
+  // background-color: white;
+  // box-shadow: none;
+  border: none;
+  // border-radius: 100px;
+}
+
 .button {
   color: #ffffff;
   margin-top: 4vh;
+  box-shadow: none;
   &.google {
     background-color: #e74630;
     &:hover {
-      background-color: #ca3c29;
-    }
-    &:focus {
-      background-color: #ca3c29;
-    }
-    &:active {
       background-color: #ca3c29;
     }
   }
@@ -158,54 +176,36 @@ export default {
     &:hover {
       background-color: #35508a;
     }
-    &:focus {
-      background-color: #35508a;
-    }
-    &:active {
-      background-color: #35508a;
-    }
   }
   &.email {
-    background-color: #86e9d5;
+    background-color: $primary;
     &:hover {
-      background-color: #6fc0b0;
-    }
-    &:focus {
-      background-color: #6fc0b0;
-    }
-    &:active {
-      background-color: #6fc0b0;
+      background-color: $primary-dark;
     }
   }
   &.connecter {
-    background-color: #86e9d5;
+    background-color: $primary;
     &:hover {
-      background-color: #6fc0b0;
-    }
-    &:focus {
-      background-color: #6fc0b0;
-    }
-    &:active {
-      background-color: #6fc0b0;
+      background-color: $primary-dark;
     }
   }
   &.backBtn {
-    background-color: #86e9d5;
+    background-color: $twitter;
     &:hover {
-      background-color: #6fc0b0;
+      background-color: $twitter-dark;
     }
-    &:focus {
-      background-color: #6fc0b0;
-    }
-    &:active {
-      background-color: #6fc0b0;
-    }
+  }
+  &:focus {
+    box-shadow: none !important;
+  }
+  &:active {
+    box-shadow: none !important;
   }
   
 }
 
 h1 {
-  margin-top: 5vh;
+  // margin-top: 5vh;
 }
 
 h3 {
@@ -241,7 +241,7 @@ a {
 }
 
 .wrapperEmail {
-  margin-top: 15vh;
+  margin-top: 5vh;
 }
 
 .grouped {

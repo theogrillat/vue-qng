@@ -1,5 +1,5 @@
 <template>
-<div class="section">
+<div>
   <div class="container">
 
     <div v-if="authUser">

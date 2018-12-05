@@ -6,9 +6,24 @@ Vue.use(Vuex)
 
 let store = new Vuex.Store({
   state: {
-    user: {}
+    user: {},
+    compState: {
+      emailClicked: false
+    }
   },
   mutations: {
+    changeCompState () {
+      if (this.state.compState.emailClicked) {
+        this.state.compState.emailClicked = false
+        // console.log(this.state.compState.emailClicked)
+      } else if (!this.state.compState.emailClicked) {
+        this.state.compState.emailClicked = true
+        // console.log(this.state.compState.emailClicked)
+      } else {
+        console.log('val:' + this.state.compState.emailClicked)
+        console.log('error')
+      }
+    },
     setUser (state, payload) {
       state.user = payload
     },
@@ -41,6 +56,7 @@ let store = new Vuex.Store({
 
   },
   getters: {
+    getCompState: state => state.compState.emailClicked,
     getUser: state => state.user,
     loggedIn: state => 'uid' in state.user
   }

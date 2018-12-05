@@ -22,7 +22,7 @@ export default {
 .header {
   z-index: 99;
   border-radius: 100px;
-  background-color: rgba($color: #ffffff, $alpha: 0.9);
+  background-color: rgba($color: #ffffff, $alpha: 0.5);
   color: #000000;
   padding-bottom: 10px;
   padding-top: 25px;
@@ -31,7 +31,7 @@ export default {
   top: 5px;
   width: 98vw;
   height: 75px;
-  box-shadow: 0 6px 26px 0px rgba($color: #000000, $alpha: 0.15);
+  // box-shadow: 0 6px 26px 0px rgba($color: #000000, $alpha: 0.15);
 }
 
 

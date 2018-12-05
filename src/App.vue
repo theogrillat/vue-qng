@@ -31,9 +31,11 @@
       </router-link>
     </div>
     
+    
       <transition name="router-anim" enter-active-class="animated fadeInDown faster" leave-active-class="animated fadeOutDown faster">
         <router-view/>
       </transition>
+   
   </div>
 </template>
 
@@ -76,10 +78,10 @@ export default {
 @import "~animate.css/animate.min";
 
 // Set your colors
-$primary: #86E9D5;
-$primary-invert: findColorInvert($primary);
-$twitter: rgb(219, 179, 0);
-$twitter-invert: findColorInvert($twitter);
+$primary: #67D3B9;
+$primary-invert: #ffffff;
+$twitter: #FFA845;
+$twitter-invert: #ffffff;
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
@@ -99,7 +101,9 @@ $colors: (
 $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
-
+$input-shadow: none;
+$input-border-color: transparent;
+$control-radius: 160px;
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
@@ -110,7 +114,7 @@ $link-focus-border: $primary;
 } */
 
 html {
-  background-color: #f5f5f5;
+  background-color: #DDEAB9;
 }
 
 .button {
@@ -145,12 +149,7 @@ html {
 
 
 
-.about {
-  margin-top: 10vh;
-  /* transition: all .3s ease;
-  transform: translateX(0px);
-  opacity: 1 */
-}
+
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -163,13 +162,13 @@ html {
 #nav {
   z-index: 98;
   border-radius: 100px;
-  background-color: rgba($color: #ffffff, $alpha: 0.9);
+  background-color: rgba($color: #ffffff, $alpha: 0.5);
   position: absolute;
   bottom: 5px;
   left: 1vw;
   width: 98vw;
   height: 75px;
-  box-shadow: 0 6px 26px 0px rgba($color: #000000, $alpha: 0.15);
+  // box-shadow: 0 6px 26px 0px rgba($color: #000000, $alpha: 0.15);
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;
 
@@ -182,7 +181,6 @@ html {
   width: 20%;
   margin: 0px;
   font-weight: bold;
-  color: #499276;
   text-decoration: none;
 }
 
@@ -190,10 +188,9 @@ html {
 
 #nav a .navlink {
   border-radius: 100px;
-  background-color: rgba($color: rgb(183, 233, 223), $alpha: 0.3);
+  background-color: $primary;
   height: 50px;
   width: 50px;
-  color: #499276;
   text-decoration: none;
   transition: all 300ms;
   margin-top: 12.5px;
@@ -202,19 +199,23 @@ html {
 }
 
 #nav a.router-link-exact-active .navlink  {
-  background-color: $primary;
-  transition: all 300ms;
+  background-color: $twitter;
+  transition: all 100ms;
   transform: scale(1.1);
 }
 
 
 .page {
+  padding-top: 11vh;
+  top: 80px;
   position: fixed;
+  // background-color: red; 
   width: 100vw;
+  height: calc(100% - 160px);
 }
 
 .faster {
-  animation-duration: 600ms !important;
+  animation-duration: 200ms !important;
   animation-timing-function: cubic-bezier(.79, .01, .22, 1) !important;
 }
 

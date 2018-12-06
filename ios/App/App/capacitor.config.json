@@ -1,0 +1,6 @@
+{
+  "appId": "com.theogrillat.wenti",
+  "appName": "Wenti",
+  "bundledWebRuntime": false,
+  "webDir": "dist"
+}
